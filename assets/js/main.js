@@ -108,7 +108,7 @@ const T = {
     // Contact & footer
     sec_contact:  'Get in Touch',
     contact_sub:  'Available for senior backend, SRE, and DevOps roles — remote-first preferred.',
-    footer_text:  '© 2022 Montassar Fatfouti · Built with HTML, CSS & JavaScript',
+    footer_text:  '© 2022 Montassar Fatfouti · No frameworks were harmed in the making of this website',
   },
 
   fr: {
@@ -215,7 +215,7 @@ const T = {
     // Contact & footer
     sec_contact:  'Me Contacter',
     contact_sub:  'Disponible pour des postes senior backend, SRE et DevOps — télétravail privilégié.',
-    footer_text:  '© 2022 Montassar Fatfouti · Créé avec HTML, CSS & JavaScript',
+    footer_text:  '© 2022 Montassar Fatfouti · Aucun framework n\'a été blessé lors de la création de ce site',
   },
 };
 
