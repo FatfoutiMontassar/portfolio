@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Montassar Fatfouti — Lead Backend Engineer & SRE with 8+ years building scalable backend systems and cloud-native infrastructure." />
+  <meta property="og:title" content="Montassar Fatfouti | Senior Software Engineer" />
+  <meta property="og:description" content="Lead Backend Engineer specialising in Python, Node.js, Kubernetes, and cloud-native systems at scale." />
+  <meta property="og:type" content="website" />
+  <title>Montassar Fatfouti | Senior Software Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0b14'/%3E%3Ctext y='68' x='14' font-size='58' font-family='Inter,sans-serif' font-weight='800' fill='%2360a5fa'%3EMF%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Prevent flash: apply theme + language before first paint -->
+  <script>
+    (function () {
+      // ── Theme ──
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      document.documentElement.dataset.theme = savedTheme || (prefersLight ? 'light' : 'dark');
+
+      // ── Language ──
+      const savedLang = localStorage.getItem('portfolio-lang');
+      const supported = ['en', 'fr'];
+      if (savedLang && supported.includes(savedLang)) {
+        document.documentElement.lang = savedLang;
+      } else {
+        const langs = [...(navigator.languages || []), navigator.language].filter(Boolean);
+        for (const l of langs) {
+          const code = l.slice(0, 2).toLowerCase();
+          if (supported.includes(code)) { document.documentElement.lang = code; break; }
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAV ═══════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#home" aria-label="Home">
+        <span class="logo-mark">MF</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks" role="list">
+        <li><a href="#about"      class="nav__link" data-i18n="nav_about">About</a></li>
+        <li><a href="#skills"     class="nav__link" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="#experience" class="nav__link" data-i18n="nav_exp">Experience</a></li>
+        <li><a href="#certs"      class="nav__link" data-i18n="nav_certs">Certifications</a></li>
+        <li><a href="#contact"    class="nav__link" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+
+      <!-- Theme toggle -->
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <!-- Sun: visible in dark mode (click → go light) -->
+        <svg class="theme-icon theme-icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <!-- Moon: visible in light mode (click → go dark) -->
+        <svg class="theme-icon theme-icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- Language toggle -->
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-opt" data-lang="en">EN</button>
+        <button class="lang-opt" data-lang="fr">FR</button>
+      </div>
+
+      <a href="mailto:montassar.fatfouti@gmail.com" class="nav__cta" data-i18n="nav_hire">Hire me</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section id="home" class="hero">
+    <div class="blob blob--blue"   aria-hidden="true"></div>
+    <div class="blob blob--purple" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <div class="hero__text">
+        <p class="hero__greeting" data-i18n="hero_greeting">Hello, I'm</p>
+        <h1 class="hero__name">Montassar<br/>Fatfouti</h1>
+        <p class="hero__role">
+          <span id="typewriter"></span><span class="cursor-blink">|</span>
+        </p>
+        <p class="hero__tagline" data-i18n="hero_tagline">
+          8+ years designing and operating backend systems, cloud-native infrastructure, and scalable architectures. I lead technical analysis, make the architectural calls, and ship at scale.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary" data-i18n="hero_cta1">Get in touch</a>
+          <a href="#experience" class="btn btn--ghost" data-i18n="hero_cta2">View experience</a>
+        </div>
+        <div class="hero__chips" aria-label="Key technologies">
+          <span class="chip">Python</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Kubernetes</span>
+          <span class="chip">Redis</span>
+          <span class="chip">KEDA</span>
+          <span class="chip">ArgoCD</span>
+          <span class="chip">GCP</span>
+        </div>
+      </div>
+
+      <div class="hero__card-wrap">
+        <div class="profile-card" role="complementary" aria-label="Profile summary">
+          <div class="profile-card__avatar" aria-hidden="true">MF</div>
+          <p class="profile-card__name">Montassar Fatfouti</p>
+          <p class="profile-card__title" data-i18n="profile_title">Senior Software Engineer</p>
+          <div class="profile-card__divider"></div>
+          <div class="profile-card__stats">
+            <div class="pstat">
+              <span class="pstat__val">8+</span>
+              <span class="pstat__lbl" data-i18n="pstat_years">Years exp.</span>
+            </div>
+            <div class="pstat">
+              <span class="pstat__val">10+</span>
+              <span class="pstat__lbl" data-i18n="pstat_micro">Microservices</span>
+            </div>
+            <div class="pstat">
+              <span class="pstat__val">CKAD</span>
+              <span class="pstat__lbl" data-i18n="pstat_cert">Certified</span>
+            </div>
+          </div>
+          <div class="profile-card__divider"></div>
+          <div class="profile-card__chips">
+            <span class="chip chip--sm">Flask · Django</span>
+            <span class="chip chip--sm">Kubernetes</span>
+            <span class="chip chip--sm">Terraform</span>
+            <span class="chip chip--sm">GCP</span>
+          </div>
+          <div class="profile-card__status">
+            <span class="status-dot"></span>
+            <span data-i18n="profile_open">Open to opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span data-i18n="scroll_hint">Scroll down</span>
+      <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section id="about" class="section about">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title" data-i18n="sec_about">About Me</h2>
+      </header>
+
+      <div class="about__grid">
+        <div class="about__body">
+          <p data-i18n-html="about_p1">I design and operate the systems that keep modern software running reliably at scale — from RESTful APIs and event-driven microservices to the Kubernetes clusters, autoscalers, and GitOps pipelines that deploy and sustain them.</p>
+          <p data-i18n-html="about_p2">Beyond shipping features, I'm heavily involved in the <strong>technical and functional analysis</strong> that precedes them: translating complex product requirements into system designs, evaluating architectural trade-offs, and making the infrastructure and software decisions that teams build on for years.</p>
+          <p data-i18n-html="about_p3">At LumApps I've driven architecture across the full backend stack — OpenAPI-first Python services, TypeScript microservices, event-driven autoscaling with KEDA and Redis, and the GCP platform running it all. I write the specs, make the calls, and own the outcomes.</p>
+          <p data-i18n-html="about_p4">I also leverage <strong>AI tools like Claude Code</strong> daily to accelerate feature delivery — from generating boilerplate and reviewing architecture decisions to automating repetitive engineering tasks. AI is now a core part of how I ship faster without sacrificing quality.</p>
+        </div>
+
+        <div class="about__stats">
+          <div class="stat-card">
+            <span class="stat-card__val">8+</span>
+            <span class="stat-card__lbl" data-i18n="stat_lbl1">Years of production engineering</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__val">10+</span>
+            <span class="stat-card__lbl" data-i18n="stat_lbl2">Microservices designed &amp; shipped</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__val">4</span>
+            <span class="stat-card__lbl" data-i18n="stat_lbl3">Companies across 3 industries</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__val">∞</span>
+            <span class="stat-card__lbl" data-i18n="stat_lbl4">YAML files written</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SKILLS ═══════════════════════ -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title" data-i18n="sec_skills">Technical Skills</h2>
+      </header>
+
+      <div class="skills__grid">
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#60a5fa"></span>
+            <h3 class="skill-card__title">Backend · Python</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Flask</span><span class="stag">Django</span><span class="stag">FastAPI</span>
+            <span class="stag">Connexion</span><span class="stag">SQLAlchemy</span><span class="stag">Pydantic</span>
+            <span class="stag">Alembic</span><span class="stag">Gunicorn</span><span class="stag">aiohttp</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#34d399"></span>
+            <h3 class="skill-card__title">Backend · Node.js</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">TypeScript</span><span class="stag">Fastify</span><span class="stag">Node.js</span>
+            <span class="stag">Express</span><span class="stag">Socket.io</span><span class="stag">Knex</span>
+            <span class="stag">LangChain</span><span class="stag">Yarn Workspaces</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#fb923c"></span>
+            <h3 class="skill-card__title" data-i18n="sk_data">Data, Cache &amp; Messaging</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Redis</span><span class="stag">Redis Cluster</span><span class="stag">Redis Pub/Sub</span>
+            <span class="stag">Celery</span><span class="stag">Flower</span><span class="stag">PostgreSQL</span>
+            <span class="stag">pgvector</span><span class="stag">GCP Pub/Sub</span><span class="stag">REST · OpenAPI</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#60a5fa"></span>
+            <h3 class="skill-card__title" data-i18n="sk_containers">Containers &amp; Orchestration</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Docker</span><span class="stag">Kubernetes</span><span class="stag">GKE</span>
+            <span class="stag">Helm</span><span class="stag">ArgoCD</span><span class="stag">Kong API GW</span>
+            <span class="stag">Kustomize</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#34d399"></span>
+            <h3 class="skill-card__title" data-i18n="sk_scale">Scalability &amp; Autoscaling</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">KEDA</span><span class="stag">HPA</span><span class="stag">VPA</span>
+            <span class="stag">Cluster Autoscaler</span><span class="stag">Redis-driven scaling</span>
+            <span class="stag">Event-driven arch.</span><span class="stag">Queue-based scaling</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#a78bfa"></span>
+            <h3 class="skill-card__title">IaC &amp; CI/CD</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Terraform</span><span class="stag">Terragrunt</span><span class="stag">Atlantis</span>
+            <span class="stag">GitHub Actions</span><span class="stag">Jenkins</span><span class="stag">GitOps</span>
+            <span class="stag">Vault</span><span class="stag">Git-Crypt</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#60a5fa"></span>
+            <h3 class="skill-card__title">Google Cloud Platform</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">GKE</span><span class="stag">Cloud Run</span><span class="stag">Pub/Sub</span>
+            <span class="stag">Cloud SQL</span><span class="stag">GCS</span><span class="stag">Vertex AI</span>
+            <span class="stag">Cloud IAM</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#fb923c"></span>
+            <h3 class="skill-card__title" data-i18n="sk_obs">Observability &amp; SRE</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Datadog</span><span class="stag">OpenTelemetry</span><span class="stag">Prometheus</span>
+            <span class="stag">Grafana</span><span class="stag">Distributed Tracing</span><span class="stag">APM</span>
+            <span class="stag">SLOs / SLAs</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#fbbf24"></span>
+            <h3 class="skill-card__title" data-i18n="sk_arch">Architecture &amp; Tech Leadership</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag" data-i18n="stag_analysis">Technical analysis</span>
+            <span class="stag" data-i18n="stag_specs">Functional specs</span>
+            <span class="stag" data-i18n="stag_design">System design</span>
+            <span class="stag" data-i18n="stag_micro">Microservices arch.</span>
+            <span class="stag" data-i18n="stag_api">API design</span>
+            <span class="stag" data-i18n="stag_capacity">Capacity planning</span>
+            <span class="stag" data-i18n="stag_lead">Tech leadership</span>
+            <span class="stag" data-i18n="stag_mentoring">Mentoring</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#a78bfa"></span>
+            <h3 class="skill-card__title" data-i18n="sk_ai">AI &amp; Automation</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Claude Code</span><span class="stag">LangChain</span>
+            <span class="stag" data-i18n="stag_prompt">Prompt engineering</span>
+            <span class="stag" data-i18n="stag_agentic">Agentic workflows</span>
+            <span class="stag">MCP integrations</span>
+            <span class="stag">Vertex AI</span><span class="stag">OpenAI API</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card__head">
+            <span class="skill-card__dot" style="--c:#fb7185"></span>
+            <h3 class="skill-card__title" data-i18n="sk_quality">Quality &amp; Security</h3>
+          </div>
+          <div class="skill-card__tags">
+            <span class="stag">Pytest</span><span class="stag">Mypy</span><span class="stag">Ruff</span>
+            <span class="stag">ESLint</span><span class="stag">Semgrep (SAST)</span><span class="stag">Pre-commit</span>
+            <span class="stag" data-i18n="stag_coverage">Code coverage</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXPERIENCE ═══════════════════════ -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title" data-i18n="sec_exp">Work Experience</h2>
+      </header>
+
+      <div class="timeline">
+
+        <!-- LumApps -->
+        <article class="job reveal">
+          <div class="job__aside">
+            <time class="job__period" data-i18n="j1_period">Sep 2022 — Present</time>
+            <div class="job__line" aria-hidden="true"></div>
+          </div>
+          <div class="job__card">
+            <div class="job__header">
+              <div>
+                <span class="job__company">LumApps</span>
+                <h3 class="job__role" data-i18n="j1_role">Lead Backend Engineer</h3>
+              </div>
+              <span class="job__badge" data-i18n="badge_current">Current</span>
+            </div>
+            <p class="job__desc" data-i18n="j1_desc">Design, development and evolution of a SaaS internal communications and employee experience platform (Employee Hub), covering the full software lifecycle — architecture, technical design, backend features, performance optimisation, and third-party integrations.</p>
+            <ul class="job__bullets">
+              <li data-i18n-html="j1_b1">Led <strong>technical and functional analysis</strong> across multiple product streams — translating business requirements into system designs, API contracts, and infrastructure blueprints</li>
+              <li data-i18n-html="j1_b2">Made key <strong>architectural decisions</strong> on service boundaries, data models, event flows, and deployment topology; authored specs that guided cross-functional engineering teams</li>
+              <li data-i18n="j1_b3">Designed and developed backend microservices (TypeScript, Python, Flask) and REST / API Gateway layers serving millions of daily users</li>
+              <li data-i18n="j1_b4">Set up, optimised and supervised CI/CD pipelines with GitHub Actions, Jenkins, and ArgoCD</li>
+              <li data-i18n="j1_b5">Automated deployments on GKE and managed GCP infrastructure (Cloud Run, Pub/Sub, Cloud SQL)</li>
+              <li data-i18n-html="j1_b6">Implemented <strong>KEDA</strong>-based event-driven autoscaling on GKE, using Redis queue depth as scale triggers — significantly reducing idle compute cost</li>
+              <li data-i18n="j1_b7">Designed Redis caching and session layers (Cluster + Pub/Sub) to handle traffic spikes with low-latency horizontal scaling</li>
+              <li data-i18n="j1_b8">Owned on-call rotations; drove monitoring, alerting, and observability with Datadog</li>
+              <li data-i18n="j1_b9">Mentored engineers, conducted architecture reviews, and enforced best practices across the backend guild</li>
+            </ul>
+            <div class="job__tags">
+              <span class="jtag">Python</span><span class="jtag">TypeScript</span>
+              <span class="jtag">Kubernetes · GKE</span><span class="jtag">ArgoCD</span>
+              <span class="jtag">Redis</span><span class="jtag">KEDA</span><span class="jtag">GCP</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Amontech -->
+        <article class="job reveal">
+          <div class="job__aside">
+            <time class="job__period" data-i18n="j2_period">Sep 2020 — Sep 2022</time>
+            <div class="job__line" aria-hidden="true"></div>
+          </div>
+          <div class="job__card">
+            <div class="job__header">
+              <div>
+                <span class="job__company">Amontech · Altitude Infrastructure</span>
+                <h3 class="job__role" data-i18n="j2_role">Django / Python Project Lead</h3>
+              </div>
+            </div>
+            <p class="job__desc" data-i18n="j2_desc">Built an automation platform for the telecom / fibre-optic industry to centralise and automate manual workflows (FME, ETL pipelines) and validate network node configurations through API-driven controls.</p>
+            <ul class="job__bullets">
+              <li data-i18n-html="j2_b1">Conducted the full <strong>technical and functional analysis</strong> — mapping manual field processes to system components and defining the data model, API surface, and integration points</li>
+              <li data-i18n-html="j2_b2">Made all <strong>architectural decisions</strong> solo: technology selection, service structure, and API design strategy</li>
+              <li data-i18n="j2_b3">Designed and delivered a Django-based platform that replaced manual workflows with automated API-driven validations</li>
+              <li data-i18n="j2_b4">Exposed REST APIs consumed by field teams for real-time optical node configuration checks</li>
+            </ul>
+            <div class="job__tags">
+              <span class="jtag">Python</span><span class="jtag">Django</span>
+              <span class="jtag">PostgreSQL</span><span class="jtag">GCP</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Nexius -->
+        <article class="job reveal">
+          <div class="job__aside">
+            <time class="job__period" data-i18n="j3_period">Jan 2020 — Jul 2020</time>
+            <div class="job__line" aria-hidden="true"></div>
+          </div>
+          <div class="job__card">
+            <div class="job__header">
+              <div>
+                <span class="job__company">Nexius Group · La Parisienne Assurance</span>
+                <h3 class="job__role" data-i18n="j3_role">Python · C# · Cloud Developer</h3>
+              </div>
+            </div>
+            <p class="job__desc" data-i18n="j3_desc">Automated and maintained an insurance contract subscription system built on Blockchain Quorum, serverless functions, and Databricks clusters for price visualisation and prediction.</p>
+            <ul class="job__bullets">
+              <li data-i18n="j3_b1">Maintained a Blockchain Quorum-based system for insurance contracts and quotes</li>
+              <li data-i18n="j3_b2">Built serverless event-processing functions and automated the contract quote pipeline</li>
+              <li data-i18n="j3_b3">Used Databricks clusters for price visualisation and ML-based prediction pipelines</li>
+            </ul>
+            <div class="job__tags">
+              <span class="jtag">Python</span><span class="jtag">C# / .NET</span>
+              <span class="jtag">Databricks</span><span class="jtag">Blockchain</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Expensya -->
+        <article class="job reveal">
+          <div class="job__aside">
+            <time class="job__period" data-i18n="j4_period">Jan 2018 — Dec 2019</time>
+            <div class="job__line" aria-hidden="true"></div>
+          </div>
+          <div class="job__card">
+            <div class="job__header">
+              <div>
+                <span class="job__company">Expensya</span>
+                <h3 class="job__role" data-i18n="j4_role">Python / C# Developer</h3>
+              </div>
+            </div>
+            <p class="job__desc" data-i18n="j4_desc">Contributed to Expensya — a SaaS expense management platform serving 5,000+ customers across 192 countries (acquired by Medius in 2023) — building core application features and the intelligent OCR+ pipeline that automatically digitises paper receipts and expense notes.</p>
+            <ul class="job__bullets">
+              <li data-i18n="j4_b1">Built and maintained CRUD features across the core expense management application: expense reports, approval workflows, user management, and multi-currency handling</li>
+              <li data-i18n-html="j4_b2">Contributed to <strong>OCR+</strong>, the product's core intelligence — a pipeline that automatically digitises paper receipts by extracting key fields (amount, date, merchant, VAT, currency) from raw scanned images</li>
+              <li data-i18n-html="j4_b3">Implemented <strong>classification and categorisation modules</strong> using TF-IDF vectorisation, regex pattern matching, and keyword-based scoring to auto-assign expense categories (meals, transport, accommodation) per company policy</li>
+              <li data-i18n="j4_b4">Combined multiple NLP techniques — optical character recognition, information retrieval, statistical text classification, and structured data extraction — into a single robust and extensible pipeline</li>
+              <li data-i18n="j4_b5">Worked across the full Python / C# / ASP.NET stack on Azure, contributing to both backend services and the data extraction layer</li>
+            </ul>
+            <div class="job__tags">
+              <span class="jtag">Python</span><span class="jtag">C# / ASP.NET</span>
+              <span class="jtag">OCR</span><span class="jtag">TF-IDF</span>
+              <span class="jtag">NLP</span><span class="jtag">Classification</span>
+            </div>
+          </div>
+        </article>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CERTIFICATIONS ═══════════════════════ -->
+  <section id="certs" class="section certs">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title" data-i18n="sec_certs">Certifications &amp; Education</h2>
+      </header>
+
+      <div class="creds__grid">
+        <div>
+          <h3 class="creds__sub" data-i18n="creds_sub_certs">Certifications</h3>
+          <div class="cred-list">
+            <div class="cred-card cred-card--hi reveal">
+              <span class="cred-icon">🎖</span>
+              <div>
+                <p class="cred-name">CKAD — Certified Kubernetes Application Developer</p>
+                <p class="cred-from">Linux Foundation · CNCF</p>
+              </div>
+            </div>
+            <div class="cred-card reveal">
+              <span class="cred-icon">🐳</span>
+              <div>
+                <p class="cred-name" data-i18n="cert2_name">Docker — Container fundamentals &amp; advanced</p>
+                <p class="cred-from">Udemy</p>
+              </div>
+            </div>
+            <div class="cred-card reveal">
+              <span class="cred-icon">☁</span>
+              <div>
+                <p class="cred-name">Google Cloud Platform (GCP)</p>
+                <p class="cred-from">Udemy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="creds__sub" data-i18n="creds_sub_edu">Education</h3>
+          <div class="cred-list">
+            <div class="cred-card reveal">
+              <span class="cred-icon">🎓</span>
+              <div>
+                <p class="cred-name" data-i18n="edu1_name">Engineering Degree — Computer Science &amp; Telecommunications</p>
+                <p class="cred-from" data-i18n="edu1_from">École Supérieure des Communications de Tunis · 2018</p>
+              </div>
+            </div>
+            <div class="cred-card reveal">
+              <span class="cred-icon">📐</span>
+              <div>
+                <p class="cred-name" data-i18n="edu2_name">Preparatory Cycle — Mathematics &amp; Physics</p>
+                <p class="cred-from">IPEIEM · 2015</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="contact__inner">
+        <header class="section-head" style="flex-direction:column;text-align:center;margin-bottom:1rem;">
+          <span class="section-num">05</span>
+          <h2 class="section-title" data-i18n="sec_contact">Get in Touch</h2>
+        </header>
+        <p class="contact__sub" data-i18n="contact_sub">Available for senior backend, SRE, and DevOps roles — remote-first preferred.</p>
+        <div class="contact__links">
+          <a href="mailto:montassar.fatfouti@gmail.com" class="contact-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            montassar.fatfouti@gmail.com
+          </a>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener noreferrer" class="contact-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            github.com/YOUR_GITHUB
+          </a>
+          <a href="https://linkedin.com/in/montassar-fatfouti-9b3378121" target="_blank" rel="noopener noreferrer" class="contact-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            linkedin.com/in/montassar-fatfouti
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footer_text">&copy; 2022 Montassar Fatfouti &nbsp;·&nbsp; Built with HTML, CSS &amp; JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
